@@ -45,7 +45,6 @@ export const useUserLogin = () => {
          return (await apiClient.post("/user/login", formData, jsonConfig)).data;
       },
       onSuccess: (data) => {
-         toast.success(data?.status);
          query.invalidateQueries({
             queryKey: ["auth"],
          });
