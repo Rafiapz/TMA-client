@@ -51,7 +51,7 @@ const LoginForm: FC = () => {
                         <Field name="email" placeholder="Email" className="border border-gray-500 h-10 pl-2" />
                         <ErrorMessage name="email" className="text-red-500 h-5" component={"div"} />
                         <Field name="password" type="password" placeholder="Password" className="border border-gray-500 h-10 pl-2 mt-5" />
-                        <ErrorMessage name="email" className="text-red-500" component={"div"} />
+                        <ErrorMessage name="password" className="text-red-500" component={"div"} />
                      </div>
                      <div className=" p-5 pt-0 ">
                         {isPending ? (
