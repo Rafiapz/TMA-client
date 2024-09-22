@@ -2,27 +2,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { FC } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
-import { logout } from "../api/userApi";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
 
 const Header: FC = () => {
    const location = useLocation().pathname;
    const query: QueryClient = useQueryClient();
    const userData: any = query.getQueryData(["auth"]);
 
-
    const navigate = useNavigate();
 
-   const { mutate: handleLogout } = useMutation({
-      mutationFn: logout,
-      onSuccess: () => {
-         query.invalidateQueries({
-            queryKey: ["auth"],
-         });
-         query.removeQueries();
-         navigate("/login");
-      },
-   });
+   const handleLogout = () => {
+      localStorage.removeItem("tmaToken");
+      query.invalidateQueries({
+         queryKey: ["auth"],
+      });
+      query.removeQueries();
+      navigate("/login");
+   };
 
    return (
       <div className="bg-blue-600 h-[60px] p-2 w-full flex z-10 top-0 left-0 fixed">

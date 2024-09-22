@@ -1,28 +1,6 @@
 const TaskCard = ({ task, handleDelete, handleEditModal, handleViewModal, setActiveCard }: any) => {
-   const handleTouchStart = () => {
-      setActiveCard(task?._id);
-   };
-
-   const handleTouchEnd = () => {
-      setActiveCard(null);
-   };
-
-   const handleDragStart = () => {
-      setActiveCard(task?._id);
-   };
-
-   const handleDragEnd = () => {
-      setActiveCard(null);
-   };
    return (
-      <div
-         key={task?._id}
-         draggable
-         onDragStart={handleDragStart}
-         onDragEnd={handleDragEnd}
-         onTouchStart={handleTouchStart}
-         onTouchEnd={handleTouchEnd}
-      >
+      <div key={task?._id} draggable onDragStart={() => setActiveCard(task?._id)} onDragEnd={() => setActiveCard(null)}>
          <div className="border-2 bg-blue-100 p-2 rounded-lg">
             <div className="flex flex-col gap-5">
                <h1 className="text-xl font-bold">{task?.title}</h1>

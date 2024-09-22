@@ -54,6 +54,7 @@ export const useUserLogin = () => {
          query.removeQueries();
          setIsAuthenticated(true);
          if (data.status == "success") {
+            localStorage.setItem("tmaToken", data?.token);
             navigate("/");
          }
       },
@@ -78,6 +79,7 @@ export const useLoginWithGoogle = () => {
          });
          query.removeQueries();
          if (data.status == "success") {
+            localStorage.setItem("tmaToken", data?.token);
             setIsAuthenticated(true);
             navigate("/");
          }
